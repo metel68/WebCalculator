@@ -5,16 +5,38 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{41159773-469E-492B-80F3-2C1C2EFF086D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "..\..\calculator420\calculator420\Calculator.csproj", "{3FA4D01B-55CA-45EC-8874-869051DB7C39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{41159773-469E-492B-80F3-2C1C2EFF086D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41159773-469E-492B-80F3-2C1C2EFF086D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41159773-469E-492B-80F3-2C1C2EFF086D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{41159773-469E-492B-80F3-2C1C2EFF086D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{41159773-469E-492B-80F3-2C1C2EFF086D}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{41159773-469E-492B-80F3-2C1C2EFF086D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41159773-469E-492B-80F3-2C1C2EFF086D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41159773-469E-492B-80F3-2C1C2EFF086D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{41159773-469E-492B-80F3-2C1C2EFF086D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{41159773-469E-492B-80F3-2C1C2EFF086D}.Release|x86.ActiveCfg = Release|Any CPU
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Debug|x86.ActiveCfg = Debug|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Debug|x86.Build.0 = Debug|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Release|Any CPU.ActiveCfg = Release|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Release|Mixed Platforms.Build.0 = Release|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Release|x86.ActiveCfg = Release|x86
+		{3FA4D01B-55CA-45EC-8874-869051DB7C39}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
