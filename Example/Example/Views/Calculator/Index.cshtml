@@ -1,0 +1,93 @@
+﻿@using System.Web.Mvc.Html
+
+@{
+    ViewBag.Title = "Calculator";
+}
+
+<script>
+    "use strict";
+
+    var operations = @Html.Raw(Json.Encode(ViewBag.operations));
+    
+    function FillOperationsOptions() {
+        var operationSelect = $("#operation");
+        operationSelect.empty();
+
+        var operationType = $('input[name=operationType]:checked').val();
+
+        for (var i = 0; i < operations.length; i++) {
+            var operation = operations[i];
+            if (operation.operationType === operationType) {
+                operationSelect.append('<option value="' + operation.calculatorName + '">' + operation.value + '</option>');
+            }
+        }
+    }
+
+    $('document').ready(function() {
+        FillOperationsOptions();
+    });
+</script>
+
+<h2>Calculator</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label>
+                    <input type="radio" name="operationType" value="oneArgument" onclick="FillOperationsOptions()" checked/>
+                    One argument
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label>
+                    <input type="radio" name="operationType" value="twoArguments" onclick="FillOperationsOptions()" />
+                    Two arguments
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <label>
+                    <input type="radio" name="operationType" value="order" onclick="FillOperationsOptions()" />
+                    Order
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("firstArgument", "First argument", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" name="firstArgument" type="number" value="0" step="any" required/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("secondArgument", "Second argument", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" name="secondArgument" type="number" value="0" step="any" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("operation", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" name="operation" id="operation" required></select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input class="btn btn-default" type="submit" value="Вычислить" />
+            </div>
+        </div>
+
+    </div>
+}
+
