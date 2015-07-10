@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Calculator.ArraySort;
+using Calculator.OneArgument;
+using Calculator.TwoArgument;
+using Calculator.Validation;
 
 namespace Example.Controllers
 {
@@ -27,18 +31,60 @@ namespace Example.Controllers
                                          new { value = "Арксинус", calculatorName = "Arcsin", operationType = "oneArgument" },
                                          new { value = "Арккосинус", calculatorName = "Arccos", operationType = "oneArgument" },
                                          new { value = "Арктангенс", calculatorName = "Arctan", operationType = "oneArgument" },
-                                         new { value = "Извлечение квадратного корня", calculatorName = "Sqrt", operationType = "oneArgument" }
+                                         new { value = "Извлечение квадратного корня", calculatorName = "Sqrt", operationType = "oneArgument" },
+                                         new { value = "Быстрая", calculatorName = "FastSort", operationType = "order" },
+                                         new { value = "Медленная", calculatorName = "SlowSort", operationType = "order" }
                                      };
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string operationType, string operation, double firstArgument, double? secondArgument)
+        public ActionResult Index(string operationType, string operation, string FirstArgument, string SecondArgument)
         {
-
+            String result;
+            try
+            {
+                var validator = new Validator();
+                switch (operationType)
+                {
+                    case "oneArgument":
+                        var argument = validator.ValidateNumber(FirstArgument);
+                        var calculator = OneArgmumentFactory.CreateCalculator(operation);
+                        result = Convert.ToString(calculator.Calculate(argument));
+                        break;
+                    case "twoArguments":
+                        var firstArgument = validator.ValidateNumber(FirstArgument);
+                        var secondArgument = validator.ValidateNumber(SecondArgument);
+                        var calculator2 = TwoArgmumentFactory.CreateCalculator(operation);
+                        result = Convert.ToString(calculator2.Calculate(firstArgument, secondArgument));
+                        break;
+                    case "order":
+                        var array = validator.ValidateArray(FirstArgument);
+                        var calculator3 = ArraySortFactory.CreateCalculator(operation);
+                        calculator3.Calculate(array);
+                        result = "";
+                        for (Int16 i = 0; i < array.Length; i++)
+                        {
+                            result += Convert.ToString(array[i]);
+                            result += ", ";
+                        }
+                        break;
+                    default:
+                        result = "Undefined operation";
+                        break;
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                result = "Error: second argument is empty";
+            }
+            catch (Exception ex)
+            {
+                result = ex.Message;
+            }
             TempData["Result"] = new Dictionary<string, object>
                                      {
-                                         { "result", 0 }
+                                         { "result", result }
                                      };
             return RedirectToAction("Result");
         }
